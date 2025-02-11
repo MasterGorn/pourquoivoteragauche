@@ -1,0 +1,16 @@
+{
+  "name": "pourquoivoteragauche",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch-less": "less-watch-compiler",
+    "build-less": "lessc public/less/main.less public/dist/styles.css"
+  },
+  "devDependencies": {
+    "less": "^4.2.0",
+    "less-watch-compiler": "^1.16.3"
+  },
+  "author": "Pierre Brunet",
+  "license": "ISC"
+}
