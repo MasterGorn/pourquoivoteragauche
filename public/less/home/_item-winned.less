@@ -1,0 +1,32 @@
+.timeline {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1024px;
+    margin: 0 auto;
+    justify-content: center;
+
+    .itemWinned {
+        display: flex;
+        margin: 0 10px 24px;
+        padding: 16px;
+        width: 290px;
+        height: 190px;
+        align-items: center;
+        text-align: center;
+        text-transform: uppercase;
+        font-style: italic;
+        font-weight: 900;
+        font-size: 28px;
+        line-height: 28px;
+        color: #fff;
+        background-color: #7B1399;
+        border-radius: 12px;
+        box-shadow: 0px 4px 20px 0px rgba(8, 0, 9, 0.12);
+        transition: all 0.3s;
+    
+        &:nth-child(2n) {
+            color: #7B1399;
+            background-color: #fff;
+        }
+    }
+}

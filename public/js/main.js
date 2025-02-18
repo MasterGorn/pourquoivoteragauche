@@ -1,10 +1,33 @@
 // Données pour les conquêtes sociales
 const conquetesSociales = [
     {
-        annee: "1936",
-        titre: "Congés payés",
-        description: "Instauration des congés payés sous le Front Populaire"
+        card: "Marjorité à 18 ans (au lieu de 21 ans)"
     },
+    {
+        card: "5 semaines de congés payés"
+    },
+    {
+        card: "Semaines de 35 heures"
+    },
+    {
+        card: "Abolition de la peine de mort"
+    },
+    {
+        card: "<del>Abaissement de l’âge de la retraite à 60 ans</del>"
+    },
+    {
+        card: "Instauration du PACS (Pacte Civil de Solidarité)"
+    },
+    {
+        card: "Instauration de l’Allocation de rentrée scolaire (ARS)"
+    },
+    {
+        card: "Création des emplois d’avenir pour aider des jeunes"
+    },
+    {
+        card: "Loi sur le mariage pour tous"
+    },
+
     // Ajoutez les autres conquêtes sociales ici
 ];
 
@@ -42,10 +65,9 @@ function genererTimeline() {
     const timeline = document.querySelector('.timeline');
     conquetesSociales.forEach(conquete => {
         const element = document.createElement('div');
-        element.className = 'timeline-item';
+        element.className = 'itemWinned';
         element.innerHTML = `
-            <h3>${conquete.annee} - ${conquete.titre}</h3>
-            <p>${conquete.description}</p>
+            <div>${conquete.card}</div>
         `;
         timeline.appendChild(element);
     });
@@ -109,19 +131,71 @@ function genererRessources() {
         container.appendChild(item);
     });
 
-    // Gestion du carrousel
+    // Gestion du carrousel améliorée
     const track = document.querySelector('.carousel-track');
     const prevButton = document.querySelector('.carousel-button.prev');
     const nextButton = document.querySelector('.carousel-button.next');
-    const itemWidth = 300; // Largeur d'un item + gap
+
+    function getScrollAmount() {
+        const itemWidth = track.querySelector('.carousel-item').offsetWidth;
+        const gap = 20; // La valeur du gap définie dans le CSS
+        return itemWidth + gap;
+    }
+
+    function updateButtonsVisibility() {
+        if (track.scrollLeft <= 0) {
+            prevButton.style.opacity = '0.5';
+        } else {
+            prevButton.style.opacity = '1';
+        }
+
+        if (track.scrollLeft >= track.scrollWidth - track.clientWidth - 1) {
+            nextButton.style.opacity = '0.5';
+        } else {
+            nextButton.style.opacity = '1';
+        }
+    }
 
     prevButton.addEventListener('click', () => {
-        track.scrollLeft -= itemWidth;
+        track.scrollLeft -= getScrollAmount();
     });
 
     nextButton.addEventListener('click', () => {
-        track.scrollLeft += itemWidth;
+        track.scrollLeft += getScrollAmount();
     });
+
+    // Mise à jour de la visibilité des boutons lors du défilement
+    track.addEventListener('scroll', updateButtonsVisibility);
+    // Mise à jour initiale
+    updateButtonsVisibility();
+
+    // Gestion du défilement tactile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    track.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+        const swipeThreshold = 50; // Distance minimale pour un swipe
+        const difference = touchStartX - touchEndX;
+
+        if (Math.abs(difference) > swipeThreshold) {
+            if (difference > 0) {
+                // Swipe vers la gauche
+                track.scrollLeft += getScrollAmount();
+            } else {
+                // Swipe vers la droite
+                track.scrollLeft -= getScrollAmount();
+            }
+        }
+    }
 }
 
 // Initialisation

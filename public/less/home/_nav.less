@@ -1,0 +1,102 @@
+// Navigation
+/*nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: @background-color;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+    ul {
+        display: flex;
+        justify-content: space-around;
+        padding: 1rem;
+        
+        li {
+            list-style: none;
+            
+            a {
+                text-decoration: none;
+                color: @text-color;
+                padding: 0.5rem 1rem;
+                transition: color 0.3s;
+                
+                &:hover {
+                    color: @primary-color;
+                }
+            }
+        }
+    }
+}*/
+
+.navigation {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    color: #fff;
+    background: @background-color;
+    border-bottom: 1px solid #e0e0e0;
+
+    .navigationWrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        padding: 1rem;
+
+        @media (max-width: 768px) {
+            gap: 1rem;
+            padding: 0.5rem;
+        }
+
+        .navigationLink {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            color: @text-color;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+
+            .navMapsLong {
+                display: block;
+            }
+
+            .navMapsShort {
+                display: none;
+            }
+
+            @media (max-width: 768px) {
+                flex-direction: column;
+                padding: 0.5rem;
+                font-size: 0.9rem;
+
+                .navMapsLong {
+                    display: none;
+                }
+
+                .navMapsShort {
+                    display: block;
+                }
+            }
+
+            i {
+                font-size: 1.2rem;
+            }
+
+            &:hover {
+                color: @primary-color;
+            }
+
+            &.active {
+                color: @primary-color;
+            }
+        }
+    }
+}
+
+.sectionContent {
+    padding: 96px 32px 32px;
+}
