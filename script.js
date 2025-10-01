@@ -208,7 +208,6 @@ function scenarioCard(s){
     <header>
       <h3>${s.title}</h3>
       <div class="toggle-label">
-        <span>Voir les effets négatifs</span>
         <input id="${id}" type="checkbox" class="toggle" aria-label="Basculer le scénario" />
       </div>
     </header>

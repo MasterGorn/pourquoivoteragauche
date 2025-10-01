@@ -63,13 +63,13 @@ nav a.active::after{content:'';position:absolute;bottom:-8px;left:0;width:100%;h
 .scenario:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(227,6,19,.15);border-color:var(--brand)}
 .scenario header{display:flex;align-items:center;justify-content:space-between;gap:.6rem}
 .scenario h3{margin:.2rem 0 .5rem;font-size:1.1rem}
-.scenario .toggle-label{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--muted);font-weight:500}
-.toggle{appearance:none;width:60px;height:32px;border-radius:16px;border:2px solid var(--brand);position:relative;background:var(--bg-alt);cursor:pointer;transition:all .3s ease;box-shadow:inset 0 2px 4px rgba(0,0,0,.1)}
-.toggle:hover{border-color:var(--accent);box-shadow:inset 0 2px 4px rgba(0,0,0,.1), 0 0 8px rgba(227,6,19,.2)}
-.toggle::after{content:"";position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:50%;background:var(--brand);transition:all .3s ease;box-shadow:0 2px 4px rgba(0,0,0,.2)}
-.toggle:checked{background:var(--brand);border-color:var(--accent)}
-.toggle:checked:hover{border-color:var(--accent);box-shadow:0 0 12px rgba(227,6,19,.3)}
-.toggle:checked::after{left:30px;background:white;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.scenario .toggle-label{display:flex;align-items:center;justify-content:flex-end}
+.toggle{appearance:none;width:60px;height:30px;border-radius:15px;border:none;position:relative;background:#1a1a1a;cursor:pointer;transition:all .4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:inset 0 2px 4px rgba(0,0,0,.3)}
+.toggle:hover{box-shadow:inset 0 2px 4px rgba(0,0,0,.3), 0 0 12px rgba(227,6,19,.5)}
+.toggle::before{content:"";position:absolute;top:2px;left:2px;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg, #e30613, #ff4757);transition:all .4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 2px 8px rgba(227,6,19,.6), 0 0 12px rgba(227,6,19,.4)}
+.toggle:checked{background:#1a1a1a}
+.toggle:checked:hover{box-shadow:inset 0 2px 4px rgba(0,0,0,.3), 0 0 12px rgba(30,58,138,.5)}
+.toggle:checked::before{left:32px;background:linear-gradient(135deg, #1e3a8a, #3b82f6);box-shadow:0 2px 8px rgba(30,58,138,.6), 0 0 12px rgba(30,58,138,.4)}
 .scenario .effect{color:var(--muted);font-size:.95rem;margin:.4rem 0}
 .scenario .result.good{border-left:3px solid var(--ok);padding-left:.6rem}
 .scenario .result.bad{border-left:3px solid var(--danger);padding-left:.6rem}
@@ -121,10 +121,10 @@ nav a.active::after{content:'';position:absolute;bottom:-8px;left:0;width:100%;h
   .manipulation-summary{padding:1.5rem;margin-top:2rem}
   .manipulation-summary h3{font-size:1.1rem}
   .scenario header{flex-direction:column;align-items:flex-start;gap:1rem}
-  .toggle-label{flex-direction:row-reverse;gap:.8rem}
-  .toggle{width:50px;height:28px}
-  .toggle::after{width:20px;height:20px}
-  .toggle:checked::after{left:26px}
+  .toggle-label{justify-content:flex-start}
+  .toggle{width:50px;height:25px}
+  .toggle::before{width:21px;height:21px}
+  .toggle:checked::before{left:27px}
 }
 
 @media (prefers-reduced-motion: reduce){
