@@ -137,58 +137,58 @@ const prejuges = [
 
 const manipulationBlocks = [
   {
-    icon: "🛑",
+    icon: "⚠️",
     title: "Les industriels déguisés en \"petits producteurs\"",
-    visual: "Gros industriel en costume avec un masque de fermier",
-    text: "Derrière l'image du \"petit producteur\", ce sont des multinationales qui défendent pesticides et pratiques polluantes."
+    text: "Derrière l'image du \"petit producteur\", ce sont des multinationales qui défendent pesticides et pratiques polluantes.",
+    cssClass: "industriels"
   },
   {
-    icon: "🛑",
+    icon: "⚠️",
     title: "Sabotage des services publics",
-    visual: "Un hôpital ou une école en ruine, avec une pancarte \"trop cher, privatisons !\"",
-    text: "On réduit volontairement les budgets, puis on justifie la privatisation au nom de l'efficacité."
+    text: "On réduit volontairement les budgets, puis on justifie la privatisation au nom de l'efficacité.",
+    cssClass: "privatisation"
   },
   {
-    icon: "🛑",
+    icon: "⚠️",
     title: "Médias concentrés",
-    visual: "Un milliardaire tenant une télécommande qui contrôle plusieurs chaînes",
-    text: "Une poignée de milliardaires contrôle la majorité des médias, influençant directement l'opinion."
+    text: "Une poignée de milliardaires contrôle la majorité des médias, influençant directement l'opinion.",
+    cssClass: "medias"
   },
   {
-    icon: "🛑",
+    icon: "⚠️",
     title: "Le bouc-émissaire étranger",
-    visual: "Projecteur braqué sur une silhouette d'étranger pendant que les vrais problèmes (banques, multinationales) restent dans l'ombre",
-    text: "Accuser \"l'étranger\" détourne des véritables enjeux économiques et sociaux."
+    text: "Accuser \"l'étranger\" détourne des véritables enjeux économiques et sociaux.",
+    cssClass: "etrangers"
   },
   {
-    icon: "🛑",
+    icon: "⚠️",
     title: "Fraude aux allocs vs fraude fiscale",
-    visual: "Une loupe énorme sur une pièce jaune (allocs) alors qu'un coffre rempli de billets (fraude fiscale) disparaît à l'arrière-plan",
-    text: "On pointe du doigt la fraude sociale (minoritaire) pour mieux cacher la fraude fiscale (majoritaire)."
+    text: "On pointe du doigt la fraude sociale (minoritaire) pour mieux cacher la fraude fiscale (majoritaire).",
+    cssClass: "fraude"
   },
   {
-    icon: "🛑",
+    icon: "⚠️",
     title: "Optimisation fiscale et paradis fiscaux",
-    visual: "Des multinationales avec des valises d'argent qui s'envolent vers des îles paradisiaques",
-    text: "Les grandes fortunes et multinationales déplacent leurs profits à l'étranger pour ne presque pas payer d'impôts."
+    text: "Les grandes fortunes et multinationales déplacent leurs profits à l'étranger pour ne presque pas payer d'impôts.",
+    cssClass: "evasion"
   },
   {
-    icon: "🛑",
+    icon: "⚠️",
     title: "Lobbying et portes tournantes",
-    visual: "Un ancien ministre qui passe d'une porte gouvernementale à une porte d'entreprise avec un sourire complice",
-    text: "Des ex-ministres ou hauts fonctionnaires rejoignent les conseils d'administration des grandes entreprises, assurant la continuité des privilèges."
+    text: "Des ex-ministres ou hauts fonctionnaires rejoignent les conseils d'administration des grandes entreprises, assurant la continuité des privilèges.",
+    cssClass: "lobbying"
   },
   {
-    icon: "🛑",
+    icon: "⚠️",
     title: "Greenwashing",
-    visual: "Une usine polluante avec des panneaux solaires décoratifs et des arbres en plastique devant",
-    text: "Des industries polluantes se parent d'un vernis \"vert\" pour continuer à exploiter sans changer leurs pratiques."
+    text: "Des industries polluantes se parent d'un vernis \"vert\" pour continuer à exploiter sans changer leurs pratiques.",
+    cssClass: "greenwashing"
   },
   {
-    icon: "🛑",
+    icon: "⚠️",
     title: "Casse du droit du travail",
-    visual: "Un patron qui déchire un contrat de travail avec un marteau, sous le regard impuissant d'un salarié",
-    text: "Sous prétexte de \"flexibilité\", on fragilise la protection des salariés pour maximiser les profits."
+    text: "Sous prétexte de \"flexibilité\", on fragilise la protection des salariés pour maximiser les profits.",
+    cssClass: "travail"
   }
 ];
 
@@ -227,13 +227,11 @@ function faqItem(p){
 }
 
 function manipulationBlock(m){
-  return `<article class="manipulation-block">
+  const cssClass = m.cssClass ? ` ${m.cssClass}` : '';
+  return `<article class="manipulation-block${cssClass}">
     <div class="manipulation-icon">${m.icon}</div>
     <div class="manipulation-content">
       <h3>${m.title}</h3>
-      <div class="manipulation-visual">
-        <strong>📌 Exemple visuel :</strong> ${m.visual}
-      </div>
       <p class="manipulation-text">${m.text}</p>
     </div>
   </article>`;
