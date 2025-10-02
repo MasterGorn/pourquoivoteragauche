@@ -64,6 +64,11 @@ nav a.active::after{content:'';position:absolute;bottom:-8px;left:0;width:100%;h
 #ressources::before{background:#ec4899;opacity:.15} /* Rose PS */
 #sources::before{background:#6b7280;opacity:.15} /* Gris footer */
 
+/* Titres bleus pour la section manipulation */
+#manipulation h2,
+#manipulation h3,
+#manipulation .manipulation-content h3{color:#1e3a8a}
+
 .grid{display:grid;gap:1rem}
 .cards{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
 .card{background:var(--card);border-radius:var(--radius);padding:1.5rem;border:1px solid #e0e0e0;box-shadow:var(--shadow);transition:all .3s ease;position:relative;overflow:hidden}
