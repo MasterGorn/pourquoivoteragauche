@@ -612,4 +612,56 @@ function render(){
   }
 }
 
-document.addEventListener('DOMContentLoaded', render);
+// Fonctionnalités d'accessibilité
+function initAccessibility() {
+  // Gestion du thème sombre
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = themeToggle.querySelector('.theme-icon');
+  
+  // Charger le thème sauvegardé
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('theme', newTheme);
+  });
+  
+  // Gestion de la taille du texte
+  const textDecrease = document.getElementById('text-decrease');
+  const textIncrease = document.getElementById('text-increase');
+  const textSizeIndicator = document.getElementById('text-size-indicator');
+  
+  // Charger la taille sauvegardée
+  const savedTextScale = localStorage.getItem('textScale') || '1';
+  document.documentElement.style.setProperty('--text-scale', savedTextScale);
+  textSizeIndicator.textContent = Math.round(savedTextScale * 100) + '%';
+  
+  textDecrease.addEventListener('click', () => {
+    const currentScale = parseFloat(document.documentElement.style.getPropertyValue('--text-scale') || '1');
+    const newScale = Math.max(1.0, currentScale - 0.1);
+    
+    document.documentElement.style.setProperty('--text-scale', newScale);
+    textSizeIndicator.textContent = Math.round(newScale * 100) + '%';
+    localStorage.setItem('textScale', newScale);
+  });
+  
+  textIncrease.addEventListener('click', () => {
+    const currentScale = parseFloat(document.documentElement.style.getPropertyValue('--text-scale') || '1');
+    const newScale = Math.min(1.3, currentScale + 0.1);
+    
+    document.documentElement.style.setProperty('--text-scale', newScale);
+    textSizeIndicator.textContent = Math.round(newScale * 100) + '%';
+    localStorage.setItem('textScale', newScale);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  render();
+  initAccessibility();
+});
