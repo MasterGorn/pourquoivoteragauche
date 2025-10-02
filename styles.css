@@ -108,7 +108,7 @@ html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),var(--b
 .toggle-right{background:#1e3a8a;border-color:#1e3a8a}
 .toggle-right::before{background:white;left:21px}
 
-.header-inner{display:flex;align-items:center;justify-content:space-between;min-height:80px;}
+.header-inner{display:flex;align-items:center;justify-content:space-between;min-height:80px;position:relative;}
 .brand{display:flex;align-items:center;color:var(--text);text-decoration:none;font-weight:700;transition:opacity .2s ease;justify-content:center}
 .brand:hover{opacity:.8}
 .brand img{height:76px;width:auto;border-radius:6px;}
@@ -126,6 +126,27 @@ nav{display:flex;align-items:center;gap:1rem}
 nav a{color:var(--muted);text-decoration:none;font-weight:500;transition:color .2s ease;position:relative;padding:.5rem 0;font-size:.95rem}
 nav a:hover{color:var(--brand)}
 nav a.active{color:var(--brand);font-weight:600}
+
+/* Menu burger */
+.burger-menu{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:.5rem;z-index:1001}
+.burger-line{width:25px;height:3px;background:var(--text);transition:all .3s ease;border-radius:2px}
+.burger-menu.active .burger-line:nth-child(1){transform:rotate(45deg) translate(6px, 6px)}
+.burger-menu.active .burger-line:nth-child(2){opacity:0}
+.burger-menu.active .burger-line:nth-child(3){transform:rotate(-45deg) translate(6px, -6px)}
+
+/* Menu mobile */
+.nav-mobile{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:3rem;z-index:1000;opacity:0;visibility:hidden;transition:all .3s ease}
+.nav-mobile.active{opacity:1;visibility:visible}
+
+/* Contrôles d'accessibilité dans le menu mobile */
+.mobile-accessibility-controls{display:flex;flex-direction:column;align-items:center;gap:1rem;margin-bottom:2rem}
+.mobile-accessibility-controls .text-size-controls{gap:.5rem}
+.mobile-accessibility-controls .accessibility-btn{padding:.6rem 1rem;font-size:1rem}
+
+/* Liens de navigation mobile */
+.mobile-nav-links{display:flex;flex-direction:column;align-items:center;gap:2rem}
+.mobile-nav-links a{font-size:1.5rem;font-weight:600;color:var(--text);text-decoration:none;transition:color .3s ease}
+.mobile-nav-links a:hover{color:var(--brand)}
 nav a.active::after{content:'';position:absolute;bottom:-8px;left:0;width:100%;height:2px;background:var(--brand);border-radius:1px}
 
 .hero{padding:6rem 0 3rem;text-align:center}
@@ -305,6 +326,16 @@ nav a.active::after{content:'';position:absolute;bottom:-8px;left:0;width:100%;h
   .accessibility-controls{flex-direction:row;gap:.5rem;margin-left:0;margin-top:.5rem;justify-content:center}
   .text-size-controls{gap:.3rem}
   .accessibility-btn{padding:.4rem .6rem;font-size:.8rem}
+  .site-header{background:white !important}
+  .header-inner{min-height:72px;padding:.5rem 0}
+  .brand img.logo-large{height:60px}
+  
+  /* Menu burger mobile */
+  .nav-desktop{display:none}
+  .burger-menu{display:flex;position:absolute;left:1rem;top:50%;transform:translateY(-50%)}
+  .nav-mobile{display:flex}
+  .brand{position:absolute;left:50%;top:50%;transform:translate(-50%, -50%)}
+  .accessibility-controls{display:none}
 }
 
 @media (prefers-reduced-motion: reduce){

@@ -612,56 +612,133 @@ function render(){
   }
 }
 
+// Gestion du menu burger mobile
+function initBurgerMenu() {
+  const burgerToggle = document.getElementById('burger-toggle');
+  const navMobile = document.getElementById('nav-mobile');
+  
+  burgerToggle.addEventListener('click', () => {
+    burgerToggle.classList.toggle('active');
+    navMobile.classList.toggle('active');
+    
+    // Empêcher le scroll du body quand le menu est ouvert
+    if (navMobile.classList.contains('active')) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  });
+  
+  // Fermer le menu quand on clique sur un lien
+  const mobileLinks = navMobile.querySelectorAll('.mobile-nav-links a');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      burgerToggle.classList.remove('active');
+      navMobile.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+  
+  // Fermer le menu quand on clique en dehors
+  navMobile.addEventListener('click', (e) => {
+    if (e.target === navMobile) {
+      burgerToggle.classList.remove('active');
+      navMobile.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+}
+
 // Fonctionnalités d'accessibilité
 function initAccessibility() {
   // Gestion du thème sombre
   const themeToggle = document.getElementById('theme-toggle');
   const themeIcon = themeToggle.querySelector('.theme-icon');
+  const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+  const themeIconMobile = themeToggleMobile ? themeToggleMobile.querySelector('.theme-icon') : null;
   
   // Charger le thème sauvegardé
   const savedTheme = localStorage.getItem('theme') || 'light';
   document.documentElement.setAttribute('data-theme', savedTheme);
   themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  if (themeIconMobile) themeIconMobile.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  
+  function updateTheme(newTheme) {
+    document.documentElement.setAttribute('data-theme', newTheme);
+    themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    if (themeIconMobile) themeIconMobile.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('theme', newTheme);
+  }
   
   themeToggle.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-    localStorage.setItem('theme', newTheme);
+    updateTheme(newTheme);
   });
+  
+  if (themeToggleMobile) {
+    themeToggleMobile.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      updateTheme(newTheme);
+    });
+  }
   
   // Gestion de la taille du texte
   const textDecrease = document.getElementById('text-decrease');
   const textIncrease = document.getElementById('text-increase');
   const textSizeIndicator = document.getElementById('text-size-indicator');
   
+  // Contrôles mobiles
+  const textDecreaseMobile = document.getElementById('text-decrease-mobile');
+  const textIncreaseMobile = document.getElementById('text-increase-mobile');
+  const textSizeIndicatorMobile = document.getElementById('text-size-indicator-mobile');
+  
   // Charger la taille sauvegardée
   const savedTextScale = localStorage.getItem('textScale') || '1';
   document.documentElement.style.setProperty('--text-scale', savedTextScale);
   textSizeIndicator.textContent = Math.round(savedTextScale * 100) + '%';
+  if (textSizeIndicatorMobile) textSizeIndicatorMobile.textContent = Math.round(savedTextScale * 100) + '%';
+  
+  function updateTextSize(newScale) {
+    document.documentElement.style.setProperty('--text-scale', newScale);
+    textSizeIndicator.textContent = Math.round(newScale * 100) + '%';
+    if (textSizeIndicatorMobile) textSizeIndicatorMobile.textContent = Math.round(newScale * 100) + '%';
+    localStorage.setItem('textScale', newScale);
+  }
   
   textDecrease.addEventListener('click', () => {
     const currentScale = parseFloat(document.documentElement.style.getPropertyValue('--text-scale') || '1');
     const newScale = Math.max(1.0, currentScale - 0.1);
-    
-    document.documentElement.style.setProperty('--text-scale', newScale);
-    textSizeIndicator.textContent = Math.round(newScale * 100) + '%';
-    localStorage.setItem('textScale', newScale);
+    updateTextSize(newScale);
   });
   
   textIncrease.addEventListener('click', () => {
     const currentScale = parseFloat(document.documentElement.style.getPropertyValue('--text-scale') || '1');
     const newScale = Math.min(1.3, currentScale + 0.1);
-    
-    document.documentElement.style.setProperty('--text-scale', newScale);
-    textSizeIndicator.textContent = Math.round(newScale * 100) + '%';
-    localStorage.setItem('textScale', newScale);
+    updateTextSize(newScale);
   });
+  
+  // Contrôles mobiles
+  if (textDecreaseMobile) {
+    textDecreaseMobile.addEventListener('click', () => {
+      const currentScale = parseFloat(document.documentElement.style.getPropertyValue('--text-scale') || '1');
+      const newScale = Math.max(1.0, currentScale - 0.1);
+      updateTextSize(newScale);
+    });
+  }
+  
+  if (textIncreaseMobile) {
+    textIncreaseMobile.addEventListener('click', () => {
+      const currentScale = parseFloat(document.documentElement.style.getPropertyValue('--text-scale') || '1');
+      const newScale = Math.min(1.3, currentScale + 0.1);
+      updateTextSize(newScale);
+    });
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   render();
+  initBurgerMenu();
   initAccessibility();
 });

@@ -17,11 +17,19 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
+      <!-- Menu burger pour mobile -->
+      <button class="burger-menu" id="burger-toggle" aria-label="Ouvrir le menu de navigation">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+      
       <a href="#" class="brand">
         <img src="assets/logo-pvag.png" alt="Logo Pourquoi voter à gauche" class="logo-large">
         <span class="brand-text">pourquoivoteragauche.fr</span>
       </a>
-      <nav aria-label="Navigation principale">
+      
+      <nav aria-label="Navigation principale" class="nav-desktop">
         <a href="#acquis">Acquis</a>
         <a href="#impact">Impact</a>
         <a href="#prejuges">Préjugés</a>
@@ -40,6 +48,30 @@
           <span class="theme-icon">🌙</span>
         </button>
       </div>
+      
+      <!-- Menu mobile -->
+      <nav class="nav-mobile" id="nav-mobile">
+        <!-- Contrôles d'accessibilité dans le menu mobile -->
+        <div class="mobile-accessibility-controls">
+          <div class="text-size-controls">
+            <button id="text-decrease-mobile" class="accessibility-btn" aria-label="Diminuer la taille du texte">A-</button>
+            <span id="text-size-indicator-mobile" class="text-size-indicator">100%</span>
+            <button id="text-increase-mobile" class="accessibility-btn" aria-label="Augmenter la taille du texte">A+</button>
+          </div>
+          <button id="theme-toggle-mobile" class="accessibility-btn" aria-label="Basculer entre thème clair et sombre">
+            <span class="theme-icon">🌙</span>
+          </button>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="mobile-nav-links">
+          <a href="#acquis">Acquis sociaux</a>
+          <a href="#impact">Impact au quotidien</a>
+          <a href="#prejuges">Déconstruire les préjugés</a>
+          <a href="#manipulation">La droite vous manipule</a>
+          <a href="#ressources">Ressources</a>
+        </div>
+      </nav>
     </div>
   </header>
 
