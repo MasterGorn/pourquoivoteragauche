@@ -137,6 +137,73 @@ const scenarios = [
     sources: [
       "https://www.securite-sociale.fr/la-secu-cest-quoi/histoire/les-grandes-dates"
     ]
+  },
+  {
+    title: "Si les droits syndicaux sont restreints…",
+    effect: "Moins de représentants pour négocier, défense collective affaiblie.",
+    good: "Renforcement du dialogue social → protection des représentants, transparence des négociations, soutien aux petites structures.",
+    bad: "Salariés isolés face à l’employeur ; recul du rapport de force et aggravation des inégalités.",
+    sources: [
+      "https://travail-emploi.gouv.fr/dialogue-social-et-negociation-collective",
+      "https://www.vie-publique.fr/fiches/19530-le-role-des-syndicats"
+    ]
+  },
+  {
+    title: "Si les congés payés deviennent moins effectifs…",
+    effect: "Pression à travailler pendant les congés, contournement pour les précaires et indépendants.",
+    good: "Renforcement du droit au repos → sanctions contre le non-respect, portabilité des congés pour les indépendants.",
+    bad: "Fatigue chronique, impossibilité de se ressourcer, inégalités entre salariés protégés et précaires.",
+    sources: [
+      "https://travail-emploi.gouv.fr/droit-du-travail/temps-de-travail/article/les-conges-payes",
+      "https://www.service-public.fr/particuliers/vosdroits/F2252"
+    ]
+  },
+  {
+    title: "Si le logement social se réduit…",
+    effect: "Moins d’accès pour les ménages modestes, tensions accrues sur le marché privé.",
+    good: "Relance de la construction → quotas renforcés, rénovation énergétique, accès élargi aux classes moyennes.",
+    bad: "Hausse des loyers, ségrégation territoriale, précarité renforcée pour les jeunes et familles modestes.",
+    sources: [
+      "https://www.ecologie.gouv.fr/logement-social",
+      "https://www.insee.fr/fr/statistiques/2491526"
+    ]
+  },
+  {
+    title: "Si l’âge de départ à la retraite passe de 62 à 64 ans…",
+    effect: "Allongement de la vie au travail, surtout pénalisant pour les métiers physiques et carrières longues.",
+    good: "Reconnaissance de la pénibilité → départ anticipé, formations pour reconversions en fin de carrière.",
+    bad: "Fatigue accrue en fin de carrière ; inégalités sociales renforcées car l’espérance de vie varie selon les professions.",
+    sources: [
+      "https://retraites.fr/la-reforme",
+      "https://www.vie-publique.fr/eclairage/283618-les-reformes-des-retraites-de-1993-2014"
+    ]
+  },
+  {
+    title: "Si la durée d’indemnisation chômage est réduite…",
+    effect: "Pression accrue pour retrouver un emploi rapidement ; protection sociale affaiblie.",
+    good: "Accompagnement renforcé → formation, reconversion et soutien psychologique pour sécuriser les parcours.",
+    bad: "Précarité renforcée, notamment pour les jeunes et les travailleurs précaires ; inégalités territoriales car les opportunités varient.",
+    sources: [
+      "https://travail-emploi.gouv.fr/le-dossier-de-l-assurance-chomage"
+    ]
+  },
+  {
+    title: "Si les indemnités prud’homales sont plafonnées…",
+    effect: "Encadrement des compensations en cas de licenciement abusif.",
+    good: "Dialogue social → barème relevé, meilleure protection des salariés vulnérables, médiation obligatoire.",
+    bad: "Affaiblissement de la protection des salariés ; incitation pour certaines entreprises à licencier à moindre coût.",
+    sources: [
+      "https://travail-emploi.gouv.fr/archives/archives-courantes/article/loi-travail-ordonnances"
+    ]
+  },
+  {
+    title: "Si les travailleurs indépendants et auto-entrepreneurs se multiplient…",
+    effect: "Flexibilité accrue et autonomie, mais moins de droits sociaux garantis.",
+    good: "Création de droits portables → congés payés, retraite, chômage adaptés aux indépendants.",
+    bad: "Pas de congés payés, pas de chômage, pas de retraite complète ; précarité et dépendance aux plateformes.",
+    sources: [
+      "https://www.economie.gouv.fr/entreprises/statut-auto-entrepreneur"
+    ]
   }
 ];
 
