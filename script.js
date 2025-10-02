@@ -29,13 +29,6 @@ const acquis = [
     source: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000558109"
   },
   {
-    kicker: "1981",
-    title: "Abolition de la peine de mort",
-    text: "Adoptée sous le gouvernement Mauroy, portée par Robert Badinter.",
-    tags: ["justice","droits"],
-    source: "https://fr.wikipedia.org/wiki/Abolition_de_la_peine_de_mort_en_France"
-  },
-  {
     kicker: "1999",
     title: "CMU (devenue PUMA)",
     text: "Couverture maladie universelle, facilitant l’accès à la santé pour tous.",
@@ -47,7 +40,14 @@ const acquis = [
     title: "Mariage pour tous",
     text: "Ouverture du mariage aux couples de même sexe (loi Taubira).",
     tags: ["droits","égalité"],
-    source: "https://fr.wikipedia.org/wiki/Loi_ouvrant_le_mariage_aux_couples_de_m%C3%AAme_sexe"
+    source: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000027414540#:~:text=de%20m%C3%AAme%20sexe-,LOI%20n%C2%B0%202013%2D404%20du%2017%20mai%202013%20ouvrant,de%20personnes%20de%20m%C3%AAme%20sexe"
+  },
+  {
+    kicker: "1981",
+    title: "Abolition de la peine de mort",
+    text: "Adoptée sous le gouvernement Mauroy, portée par Robert Badinter.",
+    tags: ["justice","droits"],
+    source: "https://fr.wikipedia.org/wiki/Abolition_de_la_peine_de_mort_en_France"
   }
 ];
 
