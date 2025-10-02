@@ -302,8 +302,9 @@ nav a.active::after{content:'';position:absolute;bottom:-8px;left:0;width:100%;h
   .news-media iframe{height:200px}
   .legend-items{flex-direction:column;gap:1rem;align-items:center}
   .legend-item{justify-content:center;text-align:center}
-  .accessibility-controls{flex-direction:column;gap:.5rem;margin-left:0;margin-top:.5rem}
+  .accessibility-controls{flex-direction:row;gap:.5rem;margin-left:0;margin-top:.5rem;justify-content:center}
   .text-size-controls{gap:.3rem}
+  .accessibility-btn{padding:.4rem .6rem;font-size:.8rem}
 }
 
 @media (prefers-reduced-motion: reduce){
