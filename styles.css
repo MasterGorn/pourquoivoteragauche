@@ -52,6 +52,33 @@ html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),var(--b
 .acquis-toggle-btn.expanded .toggle-text{display:none}
 .acquis-toggle-btn.expanded::after{content:"Voir moins";margin-left:.5rem}
 .hidden-acquis{transition:all .3s ease}
+
+/* Styles pour le toggle des scénarios */
+.scenarios-toggle-container{text-align:center;margin-top:2rem}
+.scenarios-toggle-btn{display:flex;align-items:center;gap:.5rem;margin:0 auto;transition:all .3s ease}
+.scenarios-toggle-btn:hover{transform:translateY(-2px)}
+.scenarios-toggle-btn.expanded .toggle-arrow{transform:rotate(180deg)}
+.scenarios-toggle-btn.expanded .toggle-text{display:none}
+.scenarios-toggle-btn.expanded::after{content:"Voir moins";margin-left:.5rem}
+.hidden-scenarios{transition:all .3s ease}
+
+/* Styles pour le toggle des préjugés */
+.prejuges-toggle-container{text-align:center;margin-top:2rem}
+.prejuges-toggle-btn{display:flex;align-items:center;gap:.5rem;margin:0 auto;transition:all .3s ease}
+.prejuges-toggle-btn:hover{transform:translateY(-2px)}
+.prejuges-toggle-btn.expanded .toggle-arrow{transform:rotate(180deg)}
+.prejuges-toggle-btn.expanded .toggle-text{display:none}
+.prejuges-toggle-btn.expanded::after{content:"Voir moins";margin-left:.5rem}
+.hidden-prejuges{transition:all .3s ease}
+
+/* Styles pour le toggle des blocs de manipulation */
+.manipulation-toggle-container{text-align:center;margin-top:2rem}
+.manipulation-toggle-btn{display:flex;align-items:center;gap:.5rem;margin:0 auto;transition:all .3s ease}
+.manipulation-toggle-btn:hover{transform:translateY(-2px)}
+.manipulation-toggle-btn.expanded .toggle-arrow{transform:rotate(180deg)}
+.manipulation-toggle-btn.expanded .toggle-text{display:none}
+.manipulation-toggle-btn.expanded::after{content:"Voir moins";margin-left:.5rem}
+.hidden-manipulation{transition:all .3s ease}
 .header-inner{display:flex;align-items:center;justify-content:space-between;min-height:80px;}
 .brand{display:flex;align-items:center;color:var(--text);text-decoration:none;font-weight:700;transition:opacity .2s ease;justify-content:center}
 .brand:hover{opacity:.8}

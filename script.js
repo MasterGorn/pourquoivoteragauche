@@ -384,13 +384,64 @@ function render(){
   }
 
   const s = document.getElementById('scenarios-grid');
-  s.innerHTML = scenarios.map(scenarioCard).join('');
+  // Afficher seulement les 6 premiers scénarios
+  const visibleScenarios = scenarios.slice(0, 6);
+  const hiddenScenarios = scenarios.slice(6);
+  
+  s.innerHTML = visibleScenarios.map(scenarioCard).join('');
+  
+  // Ajouter les scénarios cachés avec une classe pour les masquer
+  if (hiddenScenarios.length > 0) {
+    s.innerHTML += hiddenScenarios.map(scenarioCard).join('');
+    // Masquer les scénarios supplémentaires
+    const allScenarios = s.querySelectorAll('.scenario');
+    allScenarios.forEach((scenario, index) => {
+      if (index >= 6) {
+        scenario.style.display = 'none';
+        scenario.classList.add('hidden-scenarios');
+      }
+    });
+  }
 
   const f = document.getElementById('faq-grid');
-  f.innerHTML = prejuges.map(faqItem).join('');
+  // Afficher seulement les 4 premiers préjugés
+  const visiblePrejuges = prejuges.slice(0, 4);
+  const hiddenPrejuges = prejuges.slice(4);
+  
+  f.innerHTML = visiblePrejuges.map(faqItem).join('');
+  
+  // Ajouter les préjugés cachés avec une classe pour les masquer
+  if (hiddenPrejuges.length > 0) {
+    f.innerHTML += hiddenPrejuges.map(faqItem).join('');
+    // Masquer les préjugés supplémentaires
+    const allPrejuges = f.querySelectorAll('.faq-item');
+    allPrejuges.forEach((prejuge, index) => {
+      if (index >= 4) {
+        prejuge.style.display = 'none';
+        prejuge.classList.add('hidden-prejuges');
+      }
+    });
+  }
 
   const m = document.getElementById('manipulation-grid');
-  m.innerHTML = manipulationBlocks.map(manipulationBlock).join('');
+  // Afficher seulement les 6 premiers blocs de manipulation
+  const visibleManipulation = manipulationBlocks.slice(0, 6);
+  const hiddenManipulation = manipulationBlocks.slice(6);
+  
+  m.innerHTML = visibleManipulation.map(manipulationBlock).join('');
+  
+  // Ajouter les blocs de manipulation cachés avec une classe pour les masquer
+  if (hiddenManipulation.length > 0) {
+    m.innerHTML += hiddenManipulation.map(manipulationBlock).join('');
+    // Masquer les blocs de manipulation supplémentaires
+    const allManipulation = m.querySelectorAll('.manipulation-block');
+    allManipulation.forEach((block, index) => {
+      if (index >= 6) {
+        block.style.display = 'none';
+        block.classList.add('hidden-manipulation');
+      }
+    });
+  }
 
   // Toggle behavior to reveal negative outcomes
   s.querySelectorAll('.scenario').forEach(sc => {
@@ -480,6 +531,84 @@ function render(){
   } else if (toggleBtn && hiddenAcquis.length === 0) {
     // Masquer le bouton s'il n'y a pas d'acquis supplémentaires
     toggleBtn.style.display = 'none';
+  }
+
+  // Toggle des scénarios
+  const scenariosToggleBtn = document.getElementById('scenarios-toggle');
+  if (scenariosToggleBtn && hiddenScenarios.length > 0) {
+    scenariosToggleBtn.addEventListener('click', () => {
+      const hiddenScenariosElements = document.querySelectorAll('.hidden-scenarios');
+      const isExpanded = scenariosToggleBtn.classList.contains('expanded');
+      
+      if (isExpanded) {
+        // Masquer les scénarios supplémentaires
+        hiddenScenariosElements.forEach(scenario => {
+          scenario.style.display = 'none';
+        });
+        scenariosToggleBtn.classList.remove('expanded');
+      } else {
+        // Afficher les scénarios supplémentaires
+        hiddenScenariosElements.forEach(scenario => {
+          scenario.style.display = 'block';
+        });
+        scenariosToggleBtn.classList.add('expanded');
+      }
+    });
+  } else if (scenariosToggleBtn && hiddenScenarios.length === 0) {
+    // Masquer le bouton s'il n'y a pas de scénarios supplémentaires
+    scenariosToggleBtn.style.display = 'none';
+  }
+
+  // Toggle des préjugés
+  const prejugesToggleBtn = document.getElementById('prejuges-toggle');
+  if (prejugesToggleBtn && hiddenPrejuges.length > 0) {
+    prejugesToggleBtn.addEventListener('click', () => {
+      const hiddenPrejugesElements = document.querySelectorAll('.hidden-prejuges');
+      const isExpanded = prejugesToggleBtn.classList.contains('expanded');
+      
+      if (isExpanded) {
+        // Masquer les préjugés supplémentaires
+        hiddenPrejugesElements.forEach(prejuge => {
+          prejuge.style.display = 'none';
+        });
+        prejugesToggleBtn.classList.remove('expanded');
+      } else {
+        // Afficher les préjugés supplémentaires
+        hiddenPrejugesElements.forEach(prejuge => {
+          prejuge.style.display = 'block';
+        });
+        prejugesToggleBtn.classList.add('expanded');
+      }
+    });
+  } else if (prejugesToggleBtn && hiddenPrejuges.length === 0) {
+    // Masquer le bouton s'il n'y a pas de préjugés supplémentaires
+    prejugesToggleBtn.style.display = 'none';
+  }
+
+  // Toggle des blocs de manipulation
+  const manipulationToggleBtn = document.getElementById('manipulation-toggle');
+  if (manipulationToggleBtn && hiddenManipulation.length > 0) {
+    manipulationToggleBtn.addEventListener('click', () => {
+      const hiddenManipulationElements = document.querySelectorAll('.hidden-manipulation');
+      const isExpanded = manipulationToggleBtn.classList.contains('expanded');
+      
+      if (isExpanded) {
+        // Masquer les blocs de manipulation supplémentaires
+        hiddenManipulationElements.forEach(block => {
+          block.style.display = 'none';
+        });
+        manipulationToggleBtn.classList.remove('expanded');
+      } else {
+        // Afficher les blocs de manipulation supplémentaires
+        hiddenManipulationElements.forEach(block => {
+          block.style.display = 'block';
+        });
+        manipulationToggleBtn.classList.add('expanded');
+      }
+    });
+  } else if (manipulationToggleBtn && hiddenManipulation.length === 0) {
+    // Masquer le bouton s'il n'y a pas de blocs de manipulation supplémentaires
+    manipulationToggleBtn.style.display = 'none';
   }
 }
 
