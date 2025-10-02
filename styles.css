@@ -42,30 +42,27 @@ nav a.active::after{content:'';position:absolute;bottom:-8px;left:0;width:100%;h
 .btn.ghost{background:transparent;color:var(--brand);border:2px solid var(--brand);font-weight:600}
 .btn.ghost:hover{background:var(--brand);color:white;transform:translateY(-2px)}
 
-.section{padding:4rem 0;margin:2rem 0;box-shadow:0 4px 20px rgba(0,0,0,.08);position:relative;overflow:hidden;transition:all .3s ease}
+.section{padding:4rem 0;margin:0;position:relative;overflow:hidden;transition:all .3s ease}
 .section.alt{background:var(--bg-alt)}
 .section h2{font-size:2.2rem;margin:.2rem 0 1.5rem;color:var(--brand);font-weight:700;text-align:center;position:relative}
 .section-intro{color:var(--muted);margin-top:-.5rem;margin-bottom:2rem;text-align:center;font-size:1.1rem;max-width:600px;margin-left:auto;margin-right:auto}
 
 /* Bordures colorées pour chaque section */
-.section:nth-of-type(1){border-left:12px solid #e30613}
-.section:nth-of-type(2){border-left:12px solid #1e3a8a}
-.section:nth-of-type(3){border-left:12px solid #059669}
-.section:nth-of-type(4){border-left:12px solid #dc2626}
-.section:nth-of-type(5){border-left:12px solid #7c3aed}
-.section:nth-of-type(6){border-left:12px solid #ea580c}
+#acquis{border-left:12px solid #7c3aed} /* Violet NFP - Acquis sociaux */
+#impact{border-left:12px solid #059669} /* Vert écologistes - Impact au quotidien */
+#prejuges{border-left:12px solid #e30613} /* Rouge FLI - Déconstruire les préjugés */
+#manipulation{border-left:12px solid #1e3a8a} /* Bleu droite - La droite vous manipule */
+#ressources{border-left:12px solid #ec4899} /* Rose PS - Ressources */
+#sources{border-left:12px solid #6b7280} /* Gris - Footer */
 
 /* Icônes de section */
 .section::before{content:'';position:absolute;top:2rem;right:2rem;width:40px;height:40px;border-radius:50%;background:var(--brand);opacity:.1;z-index:1}
-.section:nth-of-type(1)::before{background:#e30613;opacity:.15}
-.section:nth-of-type(2)::before{background:#1e3a8a;opacity:.15}
-.section:nth-of-type(3)::before{background:#059669;opacity:.15}
-.section:nth-of-type(4)::before{background:#dc2626;opacity:.15}
-.section:nth-of-type(5)::before{background:#7c3aed;opacity:.15}
-.section:nth-of-type(6)::before{background:#ea580c;opacity:.15}
-
-/* Effet hover pour les cartes */
-.section:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.12)}
+#acquis::before{background:#7c3aed;opacity:.15} /* Violet NFP */
+#impact::before{background:#059669;opacity:.15} /* Vert écologistes */
+#prejuges::before{background:#e30613;opacity:.15} /* Rouge FLI */
+#manipulation::before{background:#1e3a8a;opacity:.15} /* Bleu droite */
+#ressources::before{background:#ec4899;opacity:.15} /* Rose PS */
+#sources::before{background:#6b7280;opacity:.15} /* Gris footer */
 
 .grid{display:grid;gap:1rem}
 .cards{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
