@@ -42,6 +42,16 @@ html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),var(--b
 .coming-soon{text-align:center;padding:3rem;background:rgba(227,6,19,.05);border-radius:var(--radius);margin:2rem 0}
 .coming-soon h3{color:var(--brand);font-size:1.3rem;margin:0 0 1rem}
 .coming-soon p{color:var(--muted);font-size:1rem}
+
+/* Styles pour le toggle des acquis */
+.acquis-toggle-container{text-align:center;margin-top:2rem}
+.acquis-toggle-btn{display:flex;align-items:center;gap:.5rem;margin:0 auto;transition:all .3s ease}
+.acquis-toggle-btn:hover{transform:translateY(-2px)}
+.toggle-arrow{font-size:1.2rem;transition:transform .3s ease}
+.acquis-toggle-btn.expanded .toggle-arrow{transform:rotate(180deg)}
+.acquis-toggle-btn.expanded .toggle-text{display:none}
+.acquis-toggle-btn.expanded::after{content:"Voir moins";margin-left:.5rem}
+.hidden-acquis{transition:all .3s ease}
 .header-inner{display:flex;align-items:center;justify-content:space-between;min-height:80px;}
 .brand{display:flex;align-items:center;color:var(--text);text-decoration:none;font-weight:700;transition:opacity .2s ease;justify-content:center}
 .brand:hover{opacity:.8}

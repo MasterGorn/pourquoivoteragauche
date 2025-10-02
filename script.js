@@ -1,6 +1,13 @@
 // Data-driven UI
 const acquis = [
   {
+    "kicker": "1906",
+    "title": "Repos hebdomadaire obligatoire",
+    "text": "Loi du 13 juillet 1906 instaurant un jour de repos hebdomadaire, généralement le dimanche, pour les salariés.",
+    "tags": ["travail", "conditions de travail"],
+    "source": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000311165/"
+  },
+  {
     kicker: "1936 · Front populaire",
     title: "Congés payés & 40 h",
     text: "Création des congés payés et réduction à 40 h/semaine via les accords de Matignon et lois de juin 1936.",
@@ -22,11 +29,46 @@ const acquis = [
     source: "https://fr.wikipedia.org/wiki/Salaire_minimum_interprofessionnel_de_croissance"
   },
   {
-    kicker: "1998–2000",
-    title: "35 heures",
-    text: "Lois Aubry : nouvelle durée légale du travail à 35 h (avec mise en œuvre 1998–2002).",
-    tags: ["travail","temps de travail"],
-    source: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000558109"
+    "kicker": "1982",
+    "title": "Renforcement des droits des travailleurs",
+    "text": "Lois Auroux : libertés syndicales, droit d’expression, amélioration des comités d’entreprise.",
+    "tags": ["travail", "droits"],
+    "source": "https://www.vie-publique.fr/eclairage/24284-les-lois-auroux"
+  },
+  {
+    "kicker": "2017",
+    "title": "Contraception gratuite pour les mineures",
+    "text": "Généralisation du tiers payant pour la contraception des mineures, sans avance de frais, afin de faciliter l’accès à la santé.",
+    "tags": ["santé", "droits", "égalité"],
+    "source": "https://www.securite-sociale.fr/actualites/contraception-gratuite-pour-les-moins-de-18-ans"
+  },
+  {
+    "kicker": "1919",
+    "title": "Journée de 8 heures",
+    "text": "Loi du 23 avril 1919 fixant la durée légale du travail à 8 heures par jour et 48 heures par semaine.",
+    "tags": ["travail", "temps de travail"],
+    "source": "https://www.vie-publique.fr/eclairage/20836-de-39-h-a-35-h"
+  },
+  {
+    "kicker": "1981",
+    "title": "39 h et 5e semaine de congés",
+    "text": "Réduction du temps de travail à 39 h et instauration d’une 5e semaine de congés payés sous François Mitterrand.",
+    "tags": ["travail", "vacances"],
+    "source": "https://www.vie-publique.fr/eclairage/20836-de-39-h-a-35-h"
+  },
+  {
+    kicker: "1981",
+    title: "Abolition de la peine de mort",
+    text: "Adoptée sous le gouvernement Mauroy, portée par Robert Badinter.",
+    tags: ["justice","droits"],
+    source: "https://fr.wikipedia.org/wiki/Abolition_de_la_peine_de_mort_en_France"
+  },
+  {
+    "kicker": "1983",
+    "title": "Retraite à 60 ans",
+    "text": "Abaissement de l’âge légal de départ à la retraite de 65 à 60 ans, décidé sous le gouvernement Mauroy.",
+    "tags": ["retraite", "solidarité"],
+    "source": "https://www.vie-publique.fr/eclairage/24285-la-retraite-a-60-ans"
   },
   {
     kicker: "1999",
@@ -36,18 +78,32 @@ const acquis = [
     source: "https://fr.wikipedia.org/wiki/Couverture_maladie_universelle"
   },
   {
+    "kicker": "1999",
+    "title": "PACS",
+    "text": "Création du pacte civil de solidarité, offrant un statut légal aux couples non mariés.",
+    "tags": ["droits", "égalité"],
+    "source": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000572235/"
+  },
+  {
+    kicker: "1998–2000",
+    title: "35 heures",
+    text: "Lois Aubry : nouvelle durée légale du travail à 35 h (avec mise en œuvre 1998–2002).",
+    tags: ["travail","temps de travail"],
+    source: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000558109"
+  },
+  {
+    "kicker": "2000",
+    "title": "CMU-C",
+    "text": "Création de la couverture maladie universelle complémentaire (CMU-C), offrant une mutuelle gratuite aux personnes à faibles revenus.",
+    "tags": ["santé", "solidarité"],
+    "source": "https://www.securite-sociale.fr/la-secu-cest-quoi/histoire/1999-la-creation-de-la-cmu"
+  },
+  {
     kicker: "2013",
     title: "Mariage pour tous",
     text: "Ouverture du mariage aux couples de même sexe (loi Taubira).",
     tags: ["droits","égalité"],
     source: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000027414540#:~:text=de%20m%C3%AAme%20sexe-,LOI%20n%C2%B0%202013%2D404%20du%2017%20mai%202013%20ouvrant,de%20personnes%20de%20m%C3%AAme%20sexe"
-  },
-  {
-    kicker: "1981",
-    title: "Abolition de la peine de mort",
-    text: "Adoptée sous le gouvernement Mauroy, portée par Robert Badinter.",
-    tags: ["justice","droits"],
-    source: "https://fr.wikipedia.org/wiki/Abolition_de_la_peine_de_mort_en_France"
   }
 ];
 
@@ -241,7 +297,24 @@ function render(){
   document.getElementById('year').textContent = new Date().getFullYear();
 
   const a = document.getElementById('acquis-grid');
-  a.innerHTML = acquis.map(card).join('');
+  // Afficher seulement les 6 premiers acquis
+  const visibleAcquis = acquis.slice(0, 6);
+  const hiddenAcquis = acquis.slice(6);
+  
+  a.innerHTML = visibleAcquis.map(card).join('');
+  
+  // Ajouter les acquis cachés avec une classe pour les masquer
+  if (hiddenAcquis.length > 0) {
+    a.innerHTML += hiddenAcquis.map(card).join('');
+    // Masquer les acquis supplémentaires
+    const allCards = a.querySelectorAll('.card');
+    allCards.forEach((card, index) => {
+      if (index >= 6) {
+        card.style.display = 'none';
+        card.classList.add('hidden-acquis');
+      }
+    });
+  }
 
   const s = document.getElementById('scenarios-grid');
   s.innerHTML = scenarios.map(scenarioCard).join('');
@@ -316,6 +389,31 @@ function render(){
   window.addEventListener('scroll', highlightActiveSection);
   highlightActiveSection(); // Initial call
 
+  // Toggle des acquis sociaux
+  const toggleBtn = document.getElementById('acquis-toggle');
+  if (toggleBtn && hiddenAcquis.length > 0) {
+    toggleBtn.addEventListener('click', () => {
+      const hiddenCards = document.querySelectorAll('.hidden-acquis');
+      const isExpanded = toggleBtn.classList.contains('expanded');
+      
+      if (isExpanded) {
+        // Masquer les acquis supplémentaires
+        hiddenCards.forEach(card => {
+          card.style.display = 'none';
+        });
+        toggleBtn.classList.remove('expanded');
+      } else {
+        // Afficher les acquis supplémentaires
+        hiddenCards.forEach(card => {
+          card.style.display = 'block';
+        });
+        toggleBtn.classList.add('expanded');
+      }
+    });
+  } else if (toggleBtn && hiddenAcquis.length === 0) {
+    // Masquer le bouton s'il n'y a pas d'acquis supplémentaires
+    toggleBtn.style.display = 'none';
+  }
 }
 
 document.addEventListener('DOMContentLoaded', render);
