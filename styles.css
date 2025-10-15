@@ -274,8 +274,9 @@ nav a.active::after{content:'';position:absolute;bottom:-8px;left:0;width:100%;h
 .manipulation-summary h3{color:#1e3a8a;font-size:1.3rem;margin:0;font-weight:700}
 
 .resource-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;list-style:none;padding:0}
-.resource-list a{display:block;background:var(--card);padding:1.5rem;border-radius:var(--radius);border:1px solid #e0e0e0;text-decoration:none;color:var(--text);transition:all .3s ease;box-shadow:var(--shadow);font-weight:500}
+.resource-list a{display:flex;align-items:center;gap:0.75rem;background:var(--card);padding:1.5rem;border-radius:var(--radius);border:1px solid #e0e0e0;text-decoration:none;color:var(--text);transition:all .3s ease;box-shadow:var(--shadow);font-weight:500}
 .resource-list a:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(227,6,19,.15);border-color:var(--brand);color:var(--brand)}
+.resource-icon{font-size:1.5rem;flex-shrink:0}
 
 .sources{line-height:1.8}
 .small{color:var(--muted);font-size:.9rem}
