@@ -33,8 +33,101 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),var(--bg-alt));color:var(--text);font:calc(16px * var(--text-scale))/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+
+/* Bandeau panoramique */
+.hero-banner{
+  position:relative;
+  width:100%;
+  height:400px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hero-image{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.panorama-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+
+.hero-overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.2) 100%);
+  z-index:2;
+}
+
 .container{max-width:1100px;margin:auto;padding:0 1rem}
-.site-header{position:sticky;top:0;backdrop-filter:saturate(1.2) blur(8px);border-bottom:2px solid var(--brand);z-index:20;box-shadow:0 2px 10px rgba(227,6,19,.1)}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:8px 0;transition:all 0.3s ease;background:linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);border-bottom:1px solid rgba(255,255,255,0.3)}
+.site-header.scrolled{background:rgba(255,255,255,0.95);box-shadow:0 2px 20px rgba(0,0,0,0.1);border-bottom:1px solid rgba(0,0,0,0.1)}
+
+/* Styles pour le header transparent */
+.site-header:not(.scrolled) .brand,
+.site-header:not(.scrolled) .brand-text,
+.site-header:not(.scrolled) nav a,
+.site-header:not(.scrolled) .accessibility-btn,
+.site-header:not(.scrolled) .text-size-indicator,
+.site-header:not(.scrolled) .burger-line{
+  color:white;
+}
+
+.site-header:not(.scrolled) .brand-text{
+  text-shadow:0 1px 3px rgba(0,0,0,0.5);
+}
+
+.site-header:not(.scrolled) nav a{
+  background:transparent;
+}
+
+.site-header:not(.scrolled) nav a:hover{
+  background:rgba(255,255,255,0.1);
+}
+
+.site-header:not(.scrolled) .accessibility-btn{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.3);
+}
+
+.site-header:not(.scrolled) .accessibility-btn:hover{
+  background:rgba(255,255,255,0.1);
+  border-color:rgba(255,255,255,0.5);
+}
+
+.site-header:not(.scrolled) .burger-line{
+  background-color:white;
+}
+
+.site-header:not(.scrolled) .nav-mobile{
+  background:var(--brand);
+}
+
+/* Styles de base pour les liens de navigation */
+nav a{
+  padding:0.5rem 1rem;
+  border-radius:6px;
+  transition:all 0.3s ease;
+  text-decoration:none;
+  font-weight:500;
+}
+
+/* Contenu principal */
+main{margin-top:0;position:relative;z-index:1}
 
 /* Encart d'information */
 .info-banner{background:linear-gradient(135deg,#f8f9fa,#e9ecef);border-bottom:3px solid var(--brand);padding:2rem 0;margin-bottom:1rem}
@@ -111,7 +204,7 @@ html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),var(--b
 .header-inner{display:flex;align-items:center;justify-content:space-between;min-height:80px;position:relative;}
 .brand{display:flex;align-items:center;color:var(--text);text-decoration:none;font-weight:700;transition:opacity .2s ease;justify-content:center}
 .brand:hover{opacity:.8}
-.brand img{height:76px;width:auto;border-radius:6px;}
+.brand img{height:60px;width:auto;border-radius:6px;}
 .logo-large{height:60px;width:auto;object-fit:contain}
 
 /* Contrôles d'accessibilité */
@@ -379,6 +472,10 @@ nav a.active::after{content:'';position:absolute;bottom:-8px;left:0;width:100%;h
 .site-footer{border-top:2px solid var(--brand);padding:3rem 0;color:var(--muted);text-align:center;background:var(--bg-alt)}
 
 @media (max-width: 768px){
+  /* Bandeau mobile */
+  .hero-banner{height:400px}
+  .panorama-img{object-fit:cover;object-position:center}
+  
   .header-inner{flex-direction:column;gap:1rem;min-height:auto;padding:1rem 0}
   .brand{justify-content:center}
   .logo-large{height:50px;max-width:200px}
@@ -424,7 +521,8 @@ nav a.active::after{content:'';position:absolute;bottom:-8px;left:0;width:100%;h
   .accessibility-controls{flex-direction:row;gap:.5rem;margin-left:0;margin-top:.5rem;justify-content:center}
   .text-size-controls{gap:.3rem}
   .accessibility-btn{padding:.4rem .6rem;font-size:.8rem}
-  .site-header{background:white !important}
+  .site-header{background:transparent !important}
+  .site-header.scrolled{background:rgba(255,255,255,0.95) !important}
   .header-inner{min-height:72px;padding:.5rem 0}
   .brand img.logo-large{height:60px}
   

@@ -561,6 +561,24 @@ function render(){
     });
   });
 
+  // Header scroll behavior
+  const header = document.querySelector('.site-header');
+  let lastScrollY = window.scrollY;
+  
+  function handleScroll() {
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY > 100) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+    
+    lastScrollY = currentScrollY;
+  }
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
+
   // Smooth scroll navigation
   document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
