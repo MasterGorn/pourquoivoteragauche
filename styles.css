@@ -270,6 +270,71 @@ nav a.active::after{content:'';position:absolute;bottom:-8px;left:0;width:100%;h
 .manipulation-visual{background:rgba(227,6,19,.08);padding:1rem;border-radius:6px;margin-bottom:1rem;font-size:.9rem;color:var(--text);border-left:3px solid var(--brand)}
 .manipulation-text{color:var(--text);line-height:1.6;margin:0;font-size:.95rem}
 
+/* Sources des blocs de manipulation */
+.manipulation-sources{margin-top:1rem}
+.sources-toggle{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.5rem;
+  background:none;
+  border:none;
+  color:#1e3a8a;
+  font-size:0.9rem;
+  font-weight:500;
+  cursor:pointer;
+  padding:0.5rem 0;
+  transition:var(--transition);
+  width:100%;
+}
+.sources-toggle:hover{color:var(--brand)}
+.sources-arrow{
+  width:0;
+  height:0;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:6px solid currentColor;
+  transition:transform 0.3s ease;
+}
+.sources-content{
+  margin-top:1rem;
+  padding:1rem;
+  background:rgba(30,58,138,0.05);
+  border-radius:var(--radius);
+  border-left:3px solid #1e3a8a;
+}
+.sources-grid{
+  display:grid;
+  gap:1rem;
+}
+.source-item{
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+}
+.source-image{
+  max-width:100%;
+  height:auto;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.source-link{
+  color:#1e3a8a;
+  text-decoration:none;
+  font-weight:500;
+  padding:0.5rem;
+  border-radius:var(--radius);
+  background:white;
+  border:1px solid #e0e0e0;
+  transition:var(--transition);
+}
+.source-link:hover{
+  background:#1e3a8a;
+  color:white;
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-lg);
+}
+
 .manipulation-summary{text-align:center;margin-top:3rem;padding:2rem;background:white;color:var(--text);border-radius:var(--radius);box-shadow:var(--shadow);border:2px solid #1e3a8a}
 .manipulation-summary h3{color:#1e3a8a;font-size:1.3rem;margin:0;font-weight:700}
 
@@ -326,6 +391,9 @@ nav a.active::after{content:'';position:absolute;bottom:-8px;left:0;width:100%;h
   .manipulation-intro h3{font-size:1.2rem}
   .manipulation-summary{padding:1.5rem;margin-top:2rem}
   .manipulation-summary h3{font-size:1.1rem}
+  .sources-content{padding:0.75rem}
+  .sources-grid{gap:0.75rem}
+  .source-image{max-width:100%;height:auto}
   .scenario header{flex-direction:column;align-items:flex-start;gap:1rem}
   .toggle-label{justify-content:flex-start}
   .toggle{width:50px;height:25px}

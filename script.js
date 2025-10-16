@@ -263,55 +263,123 @@ const manipulationBlocks = [
     icon: "⚠️",
     title: "Les industriels déguisés en \"petits producteurs\"",
     text: "Derrière l'image du \"petit producteur\", ce sont des multinationales qui défendent pesticides et pratiques polluantes.",
-    cssClass: "industriels"
+    cssClass: "industriels",
+    sources: [
+      {
+        type: "image",
+        url: "assets/images/source-industriels.png",
+        alt: "Infographie sur les industriels déguisés"
+      },
+      {
+        type: "link",
+        url: "https://example.com/source-industriels",
+        title: "Étude sur les pratiques industrielles"
+      }
+    ]
   },
   {
     icon: "⚠️",
     title: "Sabotage des services publics",
     text: "On réduit volontairement les budgets, puis on justifie la privatisation au nom de l'efficacité.",
-    cssClass: "privatisation"
+    cssClass: "privatisation",
+    sources: [
+      {
+        type: "image",
+        url: "assets/images/source-privatisation.png",
+        alt: "Infographie sur la privatisation"
+      }
+    ]
   },
   {
     icon: "⚠️",
     title: "Médias concentrés",
     text: "Une poignée de milliardaires contrôle la majorité des médias, influençant directement l'opinion.",
-    cssClass: "medias"
+    cssClass: "medias",
+    sources: [
+      {
+        type: "image",
+        url: "assets/images/source-medias.png",
+        alt: "Infographie sur la concentration des médias"
+      }
+    ]
   },
   {
     icon: "⚠️",
     title: "Le bouc-émissaire étranger",
     text: "Accuser \"l'étranger\" détourne des véritables enjeux économiques et sociaux.",
-    cssClass: "etrangers"
+    cssClass: "etrangers",
+    sources: [
+      {
+        type: "image",
+        url: "assets/images/source-etrangers.png",
+        alt: "Infographie sur le bouc-émissaire étranger"
+      }
+    ]
   },
   {
     icon: "⚠️",
     title: "Fraude aux allocs vs fraude fiscale",
     text: "On pointe du doigt la fraude sociale (minoritaire) pour mieux cacher la fraude fiscale (majoritaire).",
-    cssClass: "fraude"
+    cssClass: "fraude",
+    sources: [
+      {
+        type: "image",
+        url: "assets/images/source-fraude.png",
+        alt: "Infographie sur la fraude fiscale vs sociale"
+      }
+    ]
   },
   {
     icon: "⚠️",
     title: "Optimisation fiscale et paradis fiscaux",
     text: "Les grandes fortunes et multinationales déplacent leurs profits à l'étranger pour ne presque pas payer d'impôts.",
-    cssClass: "evasion"
+    cssClass: "evasion",
+    sources: [
+      {
+        type: "image",
+        url: "assets/images/source-evasion.png",
+        alt: "Infographie sur l'évasion fiscale"
+      }
+    ]
   },
   {
     icon: "⚠️",
     title: "Lobbying et portes tournantes",
     text: "Des ex-ministres ou hauts fonctionnaires rejoignent les conseils d'administration des grandes entreprises, assurant la continuité des privilèges.",
-    cssClass: "lobbying"
+    cssClass: "lobbying",
+    sources: [
+      {
+        type: "image",
+        url: "assets/images/source-lobbying.png",
+        alt: "Infographie sur le lobbying et les portes tournantes"
+      }
+    ]
   },
   {
     icon: "⚠️",
     title: "Greenwashing",
     text: "Des industries polluantes se parent d'un vernis \"vert\" pour continuer à exploiter sans changer leurs pratiques.",
-    cssClass: "greenwashing"
+    cssClass: "greenwashing",
+    sources: [
+      {
+        type: "image",
+        url: "assets/images/source-greenwashing.png",
+        alt: "Infographie sur le greenwashing"
+      }
+    ]
   },
   {
     icon: "⚠️",
     title: "Casse du droit du travail",
     text: "Sous prétexte de \"flexibilité\", on fragilise la protection des salariés pour maximiser les profits.",
-    cssClass: "travail"
+    cssClass: "travail",
+    sources: [
+      {
+        type: "image",
+        url: "assets/images/source-travail.png",
+        alt: "Infographie sur la casse du droit du travail"
+      }
+    ]
   }
 ];
 
@@ -351,11 +419,33 @@ function faqItem(p){
 
 function manipulationBlock(m){
   const cssClass = m.cssClass ? ` ${m.cssClass}` : '';
+  const sourcesHtml = m.sources ? `
+    <div class="manipulation-sources">
+      <button class="sources-toggle" aria-label="Afficher les sources">
+        <span class="sources-text">Source</span>
+        <span class="sources-arrow"></span>
+      </button>
+      <div class="sources-content" style="display: none;">
+        <div class="sources-grid">
+          ${m.sources.map(source => `
+            <div class="source-item">
+              ${source.type === 'image' ? 
+                `<img src="${source.url}" alt="${source.alt || 'Source'}" class="source-image">` :
+                `<a href="${source.url}" target="_blank" rel="noopener" class="source-link">${source.title || source.url}</a>`
+              }
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  ` : '';
+  
   return `<article class="manipulation-block${cssClass}">
     <div class="manipulation-icon">${m.icon}</div>
     <div class="manipulation-content">
       <h3>${m.title}</h3>
       <p class="manipulation-text">${m.text}</p>
+      ${sourcesHtml}
     </div>
   </article>`;
 }
@@ -449,6 +539,25 @@ function render(){
     const bad = sc.querySelector('.result.bad');
     toggle.addEventListener('change', () => {
       bad.hidden = !toggle.checked;
+    });
+  });
+
+  // Toggle behavior for manipulation sources
+  document.querySelectorAll('.sources-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+      const content = button.nextElementSibling;
+      const arrow = button.querySelector('.sources-arrow');
+      const isVisible = content.style.display !== 'none';
+      
+      if (isVisible) {
+        content.style.display = 'none';
+        arrow.style.transform = 'rotate(0deg)';
+        button.setAttribute('aria-label', 'Afficher les sources');
+      } else {
+        content.style.display = 'block';
+        arrow.style.transform = 'rotate(180deg)';
+        button.setAttribute('aria-label', 'Masquer les sources');
+      }
     });
   });
 
