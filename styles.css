@@ -87,6 +87,10 @@ html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),var(--b
   color:white;
 }
 
+.site-header:not(.scrolled) nav a{
+  padding: 8px;
+}
+
 .site-header:not(.scrolled) .brand-text{
   text-shadow:0 1px 3px rgba(0,0,0,0.5);
 }
@@ -96,7 +100,8 @@ html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),var(--b
 }
 
 .site-header:not(.scrolled) nav a:hover{
-  background:rgba(255,255,255,0.1);
+  background:var(--brand);
+  color:white;
 }
 
 .site-header:not(.scrolled) .accessibility-btn{
@@ -119,12 +124,13 @@ html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),var(--b
 
 /* Styles de base pour les liens de navigation */
 nav a{
-  padding:0.5rem 1rem;
+  padding:8px 1.5rem;
   border-radius:6px;
   transition:all 0.3s ease;
   text-decoration:none;
   font-weight:500;
 }
+
 
 /* Contenu principal */
 main{margin-top:0;position:relative;z-index:1}
