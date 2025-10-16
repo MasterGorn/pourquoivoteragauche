@@ -5,7 +5,7 @@ const acquis = [
     "title": "Repos hebdomadaire obligatoire",
     "text": "Loi du 13 juillet 1906 instaurant un jour de repos hebdomadaire, généralement le dimanche, pour les salariés.",
     "tags": ["travail", "conditions de travail"],
-    "source": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000311165/"
+    "source": "https://www.lefigaro.fr/politique/2013/09/30/01002-20130930ARTFIG00373-la-loi-de-1906-sur-le-repos-dominicalun-texte-de-reconciliation.php"
   },
   {
     kicker: "1936 · Front populaire",
@@ -33,7 +33,7 @@ const acquis = [
     "title": "Renforcement des droits des travailleurs",
     "text": "Lois Auroux : libertés syndicales, droit d’expression, amélioration des comités d’entreprise.",
     "tags": ["travail", "droits"],
-    "source": "https://www.vie-publique.fr/eclairage/24284-les-lois-auroux"
+    "source": "https://archives.memoires.cfdt.fr/page/action-juridique-et-lois-auroux-1982-"
   },
   {
     "kicker": "2017",
@@ -47,14 +47,14 @@ const acquis = [
     "title": "Journée de 8 heures",
     "text": "Loi du 23 avril 1919 fixant la durée légale du travail à 8 heures par jour et 48 heures par semaine.",
     "tags": ["travail", "temps de travail"],
-    "source": "https://www.vie-publique.fr/eclairage/20836-de-39-h-a-35-h"
+    "source": "https://travail-emploi.gouv.fr/sites/travail-emploi/files/files-spip/pdf/journee_de_8h.pdf"
   },
   {
     "kicker": "1981",
     "title": "39 h et 5e semaine de congés",
     "text": "Réduction du temps de travail à 39 h et instauration d’une 5e semaine de congés payés sous François Mitterrand.",
     "tags": ["travail", "vacances"],
-    "source": "https://www.vie-publique.fr/eclairage/20836-de-39-h-a-35-h"
+    "source": "https://www.welcometothejungle.com/fr/articles/conges-payes-histoire-dates"
   },
   {
     kicker: "1981",
