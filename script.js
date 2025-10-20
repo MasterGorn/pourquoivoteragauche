@@ -284,9 +284,10 @@ const manipulationBlocks = [
     cssClass: "privatisation",
     sources: [
       {
-        type: "image",
-        url: "assets/images/source-privatisation.png",
-        alt: "Infographie sur la privatisation"
+        type: "proof",
+        url: "assets/images/proof-services-publiques.jpg",
+        tinyUrl: "assets/images/proof-services-publiques-tiny.png",
+        alt: "Preuve : Sabotage des services publics"
       }
     ]
   },
@@ -297,9 +298,16 @@ const manipulationBlocks = [
     cssClass: "medias",
     sources: [
       {
-        type: "image",
-        url: "assets/images/source-medias.png",
-        alt: "Infographie sur la concentration des médias"
+        type: "proof",
+        url: "assets/images/proof-medias.jpg",
+        tinyUrl: "assets/images/proof-medias-tiny.jpg",
+        alt: "Preuve 1 : Concentration des médias"
+      },
+      {
+        type: "proof",
+        url: "assets/images/proof-medias-2.jpg",
+        tinyUrl: "assets/images/proof-medias-2-tiny.jpg",
+        alt: "Preuve 2 : Concentration des médias"
       }
     ]
   },
@@ -323,9 +331,10 @@ const manipulationBlocks = [
     cssClass: "fraude",
     sources: [
       {
-        type: "image",
-        url: "assets/images/source-fraude.png",
-        alt: "Infographie sur la fraude fiscale vs sociale"
+        type: "proof",
+        url: "assets/images/proof-fraudes.jpg",
+        tinyUrl: "assets/images/proof-fraudes-tiny.jpg",
+        alt: "Preuve : Fraude aux allocs vs fraude fiscale"
       }
     ]
   },
@@ -349,9 +358,15 @@ const manipulationBlocks = [
     cssClass: "lobbying",
     sources: [
       {
-        type: "image",
-        url: "assets/images/source-lobbying.png",
-        alt: "Infographie sur le lobbying et les portes tournantes"
+        type: "proof",
+        url: "assets/images/proof-lobbying.jpg",
+        tinyUrl: "assets/images/proof-lobbying-tiny.jpg",
+        alt: "Preuve : Lobbying et portes tournantes"
+      },
+      {
+        type: "link",
+        url: "https://multinationales.org/fr/enquetes/les-portes-tournantes/",
+        title: "Les portes tournantes - Observatoire des multinationales"
       }
     ]
   },
@@ -362,9 +377,10 @@ const manipulationBlocks = [
     cssClass: "greenwashing",
     sources: [
       {
-        type: "image",
-        url: "assets/images/source-greenwashing.png",
-        alt: "Infographie sur le greenwashing"
+        type: "proof",
+        url: "assets/images/proof-greenwashing.jpg",
+        tinyUrl: "assets/images/proof-greenwashing-tiny.jpg",
+        alt: "Preuve : Greenwashing des industries polluantes"
       }
     ]
   },
@@ -431,6 +447,8 @@ function manipulationBlock(m){
             <div class="source-item">
               ${source.type === 'image' ? 
                 `<img src="${source.url}" alt="${source.alt || 'Source'}" class="source-image">` :
+                source.type === 'proof' ?
+                `<img src="${source.tinyUrl}" data-full="${source.url}" alt="${source.alt || 'Preuve'}" class="source-image proof-image" loading="lazy">` :
                 `<a href="${source.url}" target="_blank" rel="noopener" class="source-link">${source.title || source.url}</a>`
               }
             </div>
@@ -559,6 +577,50 @@ function render(){
         button.setAttribute('aria-label', 'Masquer les sources');
       }
     });
+  });
+
+  // Proof images click to open in full size
+  document.querySelectorAll('.proof-image').forEach(img => {
+    img.addEventListener('click', () => {
+      const fullImageUrl = img.getAttribute('data-full');
+      if (fullImageUrl) {
+        // Create modal overlay
+        const modal = document.createElement('div');
+        modal.className = 'proof-modal';
+        modal.innerHTML = `
+          <div class="proof-modal-content">
+            <span class="proof-modal-close">&times;</span>
+            <img src="${fullImageUrl}" alt="${img.alt}" class="proof-modal-image">
+          </div>
+        `;
+        
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+        
+        // Close modal handlers
+        const closeModal = () => {
+          document.body.removeChild(modal);
+          document.body.style.overflow = '';
+        };
+        
+        modal.querySelector('.proof-modal-close').addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal();
+        });
+        
+        // Close on Escape key
+        const handleEscape = (e) => {
+          if (e.key === 'Escape') {
+            closeModal();
+            document.removeEventListener('keydown', handleEscape);
+          }
+        };
+        document.addEventListener('keydown', handleEscape);
+      }
+    });
+    
+    // Add cursor pointer to indicate clickable
+    img.style.cursor = 'pointer';
   });
 
   // Header scroll behavior
