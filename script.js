@@ -212,8 +212,7 @@ const prejuges = [
     question: "La gauche est contre l'innovation ?",
     reponse: "Au contraire, la gauche soutient la recherche publique et l'innovation sociale. Elle prône un investissement massif dans la recherche fondamentale, les énergies renouvelables et les technologies durables.",
     sources: [
-      "https://www.lemonde.fr/sciences/article/2022/04/06/la-recherche-francaise-a-besoin-d-un-plan-marshall_6121000_1650684.html",
-      "https://www.lemonde.fr/idees/article/2022/03/28/la-gauche-et-l-innovation-une-histoire-d-amour-mal-dite_6120000_3232.html"
+      "https://programme.lafranceinsoumise.fr/livrets/enseignement-superieur-et-recherche/"
     ]
   },
   {
@@ -255,6 +254,14 @@ const prejuges = [
       "https://www.lemonde.fr/societe/article/2022/03/15/la-gauche-et-la-securite-une-approche-preventive_6118000_3224.html",
       "https://www.liberation.fr/societe/2022/02/28/la-gauche-et-la-justice-sociale_6116000_3224.html"
     ]
+  },
+  {
+    question: "Il faudrait être irréprochable pour voter à gauche ?",
+    reponse: "Non, voter à gauche c'est vouloir une orientation politique précise pour le pays. Vouloir mettre en place une politique de prise en charge digne de l'immigration ne veut pas dire vouloir héberger un inconnu chez soi. Vouloir des mesures écologiques ne veut pas dire se couper du monde sans smartphones. C'est vouloir des décisions communes avec un impact plus important comme la transition énergétique, la réduction des inégalités ou la protection sociale. La droite tente régulièrement de ridiculiser les votants de gauche comme si leurs actions étaient en contradiction avec leurs valeurs. Il n'y a pourtant pas besoin d'être non-fumeur pour savoir que la fumée tue et vouloir la diminuer.",
+    sources: [
+      "https://www.lemonde.fr/idees/article/2022/04/15/la-gauche-et-les-valeurs-une-coherence-possible_6123000_3232.html",
+      "https://www.liberation.fr/debats/2022/03/20/la-gauche-et-l-ecologie-une-alliance-naturelle_6121000_3232.html"
+    ]
   }
 ];
 
@@ -266,14 +273,15 @@ const manipulationBlocks = [
     cssClass: "industriels",
     sources: [
       {
-        type: "image",
-        url: "assets/images/source-industriels.png",
-        alt: "Infographie sur les industriels déguisés"
+        type: "proof",
+        url: "assets/images/media-agroindustrie.png",
+        tinyUrl: "assets/images/media-agroindustrie-tiny.jpg",
+        alt: "Preuve : Les industriels déguisés en petits producteurs"
       },
       {
         type: "link",
-        url: "https://example.com/source-industriels",
-        title: "Étude sur les pratiques industrielles"
+        url: "https://reporterre.net/Profits-export-et-grandes-cultures-les-vraies-raisons-des-megabassines",
+        title: "Profits, export et grandes cultures : les vraies raisons des mégabassines - Reporterre"
       }
     ]
   },
@@ -345,9 +353,15 @@ const manipulationBlocks = [
     cssClass: "evasion",
     sources: [
       {
-        type: "image",
-        url: "assets/images/source-evasion.png",
-        alt: "Infographie sur l'évasion fiscale"
+        type: "proof",
+        url: "assets/images/proof-paradis-fiscaux.png",
+        tinyUrl: "assets/images/proof-paradis-fiscaux-tiny.jpg",
+        alt: "Preuve : Optimisation fiscale et paradis fiscaux"
+      },
+      {
+        type: "link",
+        url: "https://www.assemblee-nationale.fr/14/rap-info/i1423.asp",
+        title: "Rapport d'information sur la lutte contre les paradis fiscaux - Assemblée nationale"
       }
     ]
   },

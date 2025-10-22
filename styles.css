@@ -506,6 +506,18 @@ nav a.active::after{content:'';position:absolute;bottom:-8px;left:0;width:100%;h
 .resource-icon{font-size:1.5rem;flex-shrink:0}
 
 .sources{line-height:1.8}
+.credits-content{
+  max-width:800px;
+  margin:0 auto 2rem;
+  line-height:1.6;
+}
+.credits-content p{
+  margin-bottom:1.5rem;
+  text-align:justify;
+}
+.credits-content p:last-child{
+  margin-bottom:0;
+}
 .small{color:var(--muted);font-size:.9rem}
 
 /* Conteneur Canva */
